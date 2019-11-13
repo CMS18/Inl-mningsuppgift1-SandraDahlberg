@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Transaktion";
+}
+
+@if (TempData["Message"] != null)
+{
+    <div>
+        @TempData["Message"]
+    </div>
+}
+
+<h1>Överföring</h1>
+
+<form method="post">
+    <input type="number" name="accountIdFrom" placeholder="Kontonummer från" />
+    <input type="number" name="accountIdTo" placeholder="Kontonummer till" />
+    <input type="number" step="0.01" name="amount" placeholder="Belopp" />
+    <button asp-controller="Transfer" asp-action="Transfer">Insättning</button>
+</form>
+
+
