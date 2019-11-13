@@ -14,7 +14,7 @@
 
 <form method="post">
     <input type="number" name="accountId" placeholder="Kontonummer" />
-    <input type="number" step="0.0.1" name="amount" placeholder="Belopp" />
+    <input type="number" step="0.01" name="amount" placeholder="Belopp" />
     <button asp-controller="Bank" asp-action="Deposit">Insättning</button>
     <button asp-controller="Bank" asp-action="Withdraw">Uttag</button>
 </form>
