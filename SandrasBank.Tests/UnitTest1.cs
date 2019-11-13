@@ -46,5 +46,22 @@ namespace SandrasBank.Tests
             bank.Withdraw(1000000000000m, 1);
 
         }
+
+        [TestMethod]
+        public void TestTransfer()
+        {
+            var bank = new BankRepository();
+
+
+            var accountFrom = bank.Accounts.SingleOrDefault(x => x.AcccountId == 1);
+            var accountTo = bank.Accounts.SingleOrDefault(x => x.AcccountId == 2);
+            var balanceBeforeFrom = accountFrom.Balance;
+            var balanceBeforeTo = accountTo.Balance;
+
+            bank.Transfer(accountFrom.AcccountId, accountTo.AcccountId, 100);
+
+            Assert.AreEqual((balanceBeforeFrom - 100), accountFrom.Balance);
+            Assert.AreEqual((balanceBeforeTo + 100), accountTo.Balance);
+        }
     }
 }
