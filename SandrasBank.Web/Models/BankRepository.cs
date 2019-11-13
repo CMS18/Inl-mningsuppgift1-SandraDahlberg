@@ -32,5 +32,21 @@ namespace SandrasBank.Web.Models
 
             };
         }
+
+        public void Deposit(decimal amount, int accountId)
+        {
+            if (amount < 0) throw new Exception();
+            var account = Accounts.SingleOrDefault(a => a.AcccountId == accountId);
+
+            account.Balance += amount;
+        }
+
+        public void Withdraw(decimal amount, int accountId)
+        {            
+            var account = Accounts.SingleOrDefault(a => a.AcccountId == accountId);
+            if (amount > account.Balance || amount < 0) throw new ArgumentOutOfRangeException();
+
+                account.Balance -= amount;
+        }
     }
 }

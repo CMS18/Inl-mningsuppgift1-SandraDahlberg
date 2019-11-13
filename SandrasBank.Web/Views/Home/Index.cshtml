@@ -8,12 +8,14 @@
     <h1 class="display-4">Välkommen till Sandras bank!</h1>    
 </div>
 
+<a asp-controller="Bank" asp-action="Index">Skapa transaktion</a>
+
 <div>
     <ul>
         @foreach(var customer in Model.Customers)
         {
             <li>
-                @customer.CustomerId: @customer.Name, Kontonr: @customer.AccountId
+                @customer.CustomerId: @customer.Name, Kontonr: @customer.AccountId, @Model.Accounts.SingleOrDefault(a => a.AcccountId == customer.AccountId).Balance kr
             </li>
         }
     </ul>
