@@ -2,7 +2,19 @@
     ViewData["Title"] = "Sandras bank";
 }
 
+@model SandrasBank.Web.Models.BankRepository
+
 <div class="text-center">
-    <h1 class="display-4">Välkommen till Sandras bank!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Välkommen till Sandras bank!</h1>    
+</div>
+
+<div>
+    <ul>
+        @foreach(var customer in Model.Customers)
+        {
+            <li>
+                @customer.CustomerId: @customer.Name, Kontonr: @customer.AccountId
+            </li>
+        }
+    </ul>
 </div>
